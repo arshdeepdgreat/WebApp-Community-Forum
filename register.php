@@ -16,6 +16,14 @@
                 margin-top: 5rem
             }
         }
+        @media screen and (max-width: 600px) {
+            form {
+                max-width: 800px;
+                margin-bottom: 0px;
+                padding: 10px;
+                margin-top: 1rem
+            }
+        }
         .greenbg{
         background-color: #155252;
     }
