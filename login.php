@@ -1,3 +1,32 @@
+<?php
+    include("templates/conn.php");
+    include("templates/function.php");
+    $msg="";
+    $username="";
+    $pass="";
+
+    if (isset($_POST['submit'])){
+        $username=getsafe($con,$_POST['username']);
+        $pass=getsafe($con,$_POST['password']);
+        $md5pass=md5($pass);
+        
+    $sql="SELECT * FROM `all_users` WHERE username ='$username' and password='$md5pass'";
+    $res=mysqli_query($con,$sql);
+    $count=mysqli_num_rows($res);
+    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+    if($count==1){
+        $_SESSION['USER_LOGIN']='yes';
+        $_SESSION['USER_ID']=$row['user_id'];
+        header('location:yourpanel.php');
+        die();
+    }
+    else{
+        $msg="Please re-enter the details correctly";
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +82,16 @@
             border-radius: 50%;
         }
     </style>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 </head>
 <body class="greenbg">
     <div class="container">
@@ -63,19 +102,25 @@
             <h4 class="center white-text">
                 Sign up
             </h4>
-            <form id="form" method="GET" class="white">
+            <form id="form" method="POST" class="white">
                 <div>
                     <label for="name">Username</label>
-                    <input type="text" name="uname" id="name">
+                    <input type="text" name="username" id="name" value=<?php echo $username?>>
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" value=<?php echo $pass?>>
                 </div>
+                <p>
+                    <label>
+                        <input type="checkbox" onclick="myFunction()"/>
+                        <span>Show/Hide password</span>
+                    </label>
+                </p>
                 <div class="center">
-                    <button class="btn btn-primary"type="submit">Login</button>
+                    <button class="btn btn-primary" name="submit" value="submit" type="submit">Login</button>
                 </div>
-                <div id="error" class="rd"></div>
+                <div id="error" class="rd"><?php echo $msg?></div>
             </form>
             <div class="blbox"></div>
             <div class="center">
