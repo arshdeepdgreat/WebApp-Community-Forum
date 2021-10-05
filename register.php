@@ -12,12 +12,12 @@
     $dob="";
     $mailid="";
     if (isset($_POST['submit'])){
-        echo $name=getsafe($conn,$_POST['f_name']);
-        echo $username=getsafe($conn,$_POST['u_name']);
-        echo $password=getsafe($conn,$_POST['password']);
-        echo $c_password=getsafe($conn,$_POST['c_password']);
-        echo $dob=getsafe($conn,$_POST['dob']);
-        echo $mailid=getsafe($conn,$_POST['mail-id']);
+        $name=getsafe($conn,$_POST['f_name']);
+        $username=getsafe($conn,$_POST['u_name']);
+        $password=getsafe($conn,$_POST['password']);
+        $c_password=getsafe($conn,$_POST['c_password']);
+        $dob=getsafe($conn,$_POST['dob']);
+        $mailid=getsafe($conn,$_POST['mail-id']);
 
         $sql1="SELECT * FROM `all_users` WHERE username = '$username' ";
         $res1=mysqli_query($conn,$sql1);
@@ -34,7 +34,7 @@
         $c_password=md5($password);
 
         if($errorname=="" && $errpass==""){
-            echo $sql2="INSERT INTO `all_users`(`username`, `email_id`, `password`, `name`, `DOB`, `dp_image`) 
+            $sql2="INSERT INTO `all_users`(`username`, `email_id`, `password`, `name`, `DOB`, `dp_image`) 
             VALUES ('$username','$mailid','$c_password','$name','$dob','sample')";
             $res2=mysqli_query($conn,$sql2);
             $message=" Your username is '$username' and you can login now ";
@@ -91,6 +91,16 @@
         border-radius: 50%;
     }
     </style>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 </head>
 <body class="greenbg">
     <!-- nav bar browse + about + login -->
@@ -114,6 +124,12 @@
                     <label  for="password">Password</label>
                     <input type="password" name="password" id="password" value=<?php echo $password?>>
                 </div>
+                <p>
+                    <label>
+                        <input type="checkbox" onclick="myFunction()"/>
+                        <span>Show/Hide password</span>
+                    </label>
+                </p>
                 <div>
                     <label  for="c_password">Confirm Password</label>
                     <input type="password" name="c_password" id="c_password" value=<?php echo $c_password?>>
