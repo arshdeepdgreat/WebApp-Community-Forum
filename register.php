@@ -1,6 +1,5 @@
 <?php
     // TODO: make a nav bar
-    // add image feature 
     // details on your panel with edit profile
     include("templates/conn.php");
     include("templates/function.php");
