@@ -19,16 +19,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="templates/style.css">
+    <link rel="stylesheet" type="text/css" href="templates/style.css">
+    <style>
+        .center-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body class="greenbg">
-    <nav class="black z-depth-0">
-        <div class="container">
-            <a href="#" class="brand-logo brand-text">heading</a>
-            <ul id="nav-mobile" class="right hide-on-small-and-down">
-                <li><a href="logout.php" class="btn brand z-depth-0">Logout</a></li>
-            </ul>
+    <div class="center-screen">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
         </div>
+      </div>
+    </div>
+    </div>
+    <div class="content">
+    <nav class="black z-depth-0" style="padding-right: 30px;padding-left: 80px;">
+		<div>
+			<a href="#" class="brand-logo brand-text hide-on-med-and-down">heading</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="browse.php">Browse</a></li>
+                <li><a href="categories.php">Categories</a></li>
+                <li class="active"><a href="yourpanel.php">Your Panel</a></li>
+				<li><a href="logout.php" class="btn brand z-depth-0">Logout</a></li>
+		    </ul>
+
+            </div>
+            <br>
     </nav>
     <div class="container">
         <div class="grey lighten-4 container z-depth-3">
@@ -60,5 +88,14 @@
             </div>
         </div>
     </div>
+    </div>
+    <script>
+        document.querySelector('.content').style.display="none"
+
+        setTimeout(() => {
+            document.querySelector('.content').style.display="block"
+            document.querySelector('.center-screen').style.display="none"
+        }, 2500);
+    </script>
 </body>
 </html>
