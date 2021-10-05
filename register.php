@@ -1,4 +1,7 @@
-<?php 
+<?php
+    // TODO: make a nav bar
+    // add image feature 
+    // details on your panel with edit profile
     include("templates/conn.php");
     include("templates/function.php");
     $errorname="";
@@ -19,6 +22,18 @@
         $dob=getsafe($conn,$_POST['dob']);
         $mailid=getsafe($conn,$_POST['mail-id']);
 
+        $user_profile_pic=$_FILES['user_profile_pic'];
+        $picname=$user_profile_pic['name'];
+        $pictemp=$user_profile_pic['tmp_name'];
+        $picer=$user_profile_pic['error'];
+        $k=explode('.',$picname);
+        $ext= strtolower(end($k));
+        $valids=array('png','jpg','jpeg');
+        if (in_array($ext,$valids)){
+            $finaldest='templates/images/'.$picname;
+            move_uploaded_file($pictemp,$finaldest);
+        }
+
         $sql1="SELECT * FROM `all_users` WHERE username = '$username' ";
         $res1=mysqli_query($conn,$sql1);
         $count=mysqli_num_rows($res1);
@@ -35,7 +50,7 @@
 
         if($errorname=="" && $errpass==""){
             $sql2="INSERT INTO `all_users`(`username`, `email_id`, `password`, `name`, `DOB`, `dp_image`) 
-            VALUES ('$username','$mailid','$c_password','$name','$dob','sample')";
+            VALUES ('$username','$mailid','$c_password','$name','$dob','$finaldest')";
             $res2=mysqli_query($conn,$sql2);
             $message=" Your username is '$username' and you can login now ";
         }
@@ -110,7 +125,7 @@
             <h4 class="center white-text">
                 Register Here
             </h4>
-            <form id="form" method="POST" class="white" >
+            <form id="form" method="POST" class="white" enctype="multipart/form-data">
                 <div>
                     <label  for="first_Name">Name</label>
                     <input placeholder="Eg: John" type="text" id="first_name" name="f_name" value=<?php echo $name?>>
@@ -144,6 +159,9 @@
                     <input type="email" name="mail-id" id="mail-id" value=<?php echo $mailid?>>
                 </div>
                 <br>
+                <label style="font-size:18px; color:black;">Profile Photo</label>
+                    <input type="file" name="user_profile_pic" value=''>
+                <br><br>
                 <div class="center">
                     <button class="btn btn-primary" type="submit" name="submit" value="submit">Submit</button>
                 </div>
