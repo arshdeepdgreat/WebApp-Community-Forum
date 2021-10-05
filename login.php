@@ -6,12 +6,12 @@
     $pass="";
 
     if (isset($_POST['submit'])){
-        $username=getsafe($con,$_POST['username']);
-        $pass=getsafe($con,$_POST['password']);
+        $username=getsafe($conn,$_POST['username']);
+        $pass=getsafe($conn,$_POST['password']);
         $md5pass=md5($pass);
         
     $sql="SELECT * FROM `all_users` WHERE username ='$username' and password='$md5pass'";
-    $res=mysqli_query($con,$sql);
+    $res=mysqli_query($conn,$sql);
     $count=mysqli_num_rows($res);
     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
     if($count==1){

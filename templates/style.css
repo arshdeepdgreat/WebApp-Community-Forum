@@ -37,7 +37,7 @@ h4{
 label {
     font-size:18px; color:black;
 }
-.rd{
+.rd,.error{
     color:red;
 }
 .dp{

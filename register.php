@@ -1,3 +1,48 @@
+<?php 
+    include("templates/conn.php");
+    include("templates/function.php");
+    $errorname="";
+    $errpass="";
+    $message="";
+
+    $name="";
+    $username="";
+    $password="";
+    $c_password="";
+    $dob="";
+    $mailid="";
+    if (isset($_POST['submit'])){
+        echo $name=getsafe($conn,$_POST['f_name']);
+        echo $username=getsafe($conn,$_POST['u_name']);
+        echo $password=getsafe($conn,$_POST['password']);
+        echo $c_password=getsafe($conn,$_POST['c_password']);
+        echo $dob=getsafe($conn,$_POST['dob']);
+        echo $mailid=getsafe($conn,$_POST['mail-id']);
+
+        $sql1="SELECT * FROM `all_users` WHERE username = '$username' ";
+        $res1=mysqli_query($conn,$sql1);
+        $count=mysqli_num_rows($res1);
+        if($count>0){
+            $errorname="USERNAME IS TAKEN BY ANOTHER USER";
+            $username="";
+        }
+        if($password!=$c_password)
+        {
+            $errpass="Passwords dont match";
+            $password=$c_password='';
+        }
+        $c_password=md5($password);
+
+        if($errorname=="" && $errpass==""){
+            echo $sql2="INSERT INTO `all_users`(`username`, `email_id`, `password`, `name`, `DOB`, `dp_image`) 
+            VALUES ('$username','$mailid','$c_password','$name','$dob','sample')";
+            $res2=mysqli_query($conn,$sql2);
+            $message=" Your username is '$username' and you can login now ";
+        }
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +51,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="templates/style.css">
     <style>
         @media screen and (min-width: 600px) {
             form {
@@ -50,37 +96,40 @@
     <!-- nav bar browse + about + login -->
     <div class="container">
         <div class=" grey lighten-4 container z-depth-2">
+            <h3><?php echo $message?></h3>
             <h4 class="center white-text">
                 Register Here
             </h4>
-            <form id="form" method="GET" class="white" >
+            <form id="form" method="POST" class="white" >
                 <div>
                     <label  for="first_Name">Name</label>
-                    <input placeholder="Eg: John" type="text" id="first_name" name="f_name">
+                    <input placeholder="Eg: John" type="text" id="first_name" name="f_name" value=<?php echo $name?>>
                 </div>
                 <div>
                     <label  for="name">Username</label>
-                    <input type="text" name="u_name" id="name">
+                    <input type="text" name="u_name" id="name" value=<?php echo $username?>>
+                    <p class="error"><?php echo $errorname?></p>
                 </div>
                 <div>
                     <label  for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" value=<?php echo $password?>>
                 </div>
                 <div>
                     <label  for="c_password">Confirm Password</label>
-                    <input type="password" name="c_password" id="c_password">
+                    <input type="password" name="c_password" id="c_password" value=<?php echo $c_password?>>
+                    <p class="error"><?php echo $errpass?></p>
                 </div>
                 <div>
                     <label  for="dob">Date of Birth</label>
-                    <input type="date" name="dob" id="dob">
+                    <input type="date" name="dob" id="dob" value=<?php echo $dob?>>
                 </div>
                 <div>
                     <label  for="mail-id">Email</label>
-                    <input type="email" name="mail-id" id="mail-id">
+                    <input type="email" name="mail-id" id="mail-id" value=<?php echo $mailid?>>
                 </div>
                 <br>
                 <div class="center">
-                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                    <button class="btn btn-primary" type="submit" name="submit" value="submit">Submit</button>
                 </div>
                 <div id="error" style="color: red;"></div>
             </form>
