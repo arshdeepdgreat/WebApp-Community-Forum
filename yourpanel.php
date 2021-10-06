@@ -20,15 +20,6 @@
     <title>Your Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="templates/style.css">
-    <style>
-        .center-screen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 100vh;
-        }
-    </style>
 </head>
 <body class="greenbg">
     <div class="center-screen">
@@ -95,7 +86,7 @@
         setTimeout(() => {
             document.querySelector('.content').style.display="block"
             document.querySelector('.center-screen').style.display="none"
-        }, 2500);
+        }, 2000);
     </script>
 </body>
 </html>

@@ -2,27 +2,13 @@
     margin:0;
     padding: 0;
 }
-@media screen and (min-width: 600px) {
-    form {
-        max-width: 800px;
-        margin: 6rem;
-        margin-bottom: 0px;
-        padding: 20px;
-        margin-top: 5rem
-    }
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
 }
-@media screen and (max-width: 600px) {
-    form {
-        max-width: 800px;
-        margin-bottom: 0px;
-        padding: 50px;
-        margin-top: 1rem
-    }
-    .phonebox{
-        margin-top:100px;
-    }
-}
-
 .greenbg{
     background-color: #155252;
 }
