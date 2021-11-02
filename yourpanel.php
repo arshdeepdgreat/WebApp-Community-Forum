@@ -43,7 +43,7 @@
             <ul id="nav-mobile" class="right">
                 <li><a href="browse.php">Browse</a></li>
                 <li><a href="categories.php">Categories</a></li>
-                <li class="active"><a href="">Your Panel</a></li>
+                <li class="active"><a href="yourpanel.php">Your Panel</a></li>
 				<li><a href="logout.php" class="btn brand z-depth-0">Logout</a></li>
 		    </ul>
 
@@ -82,6 +82,13 @@
 
             </div>
         </div>
+        posted questions list
+
+        unanswered questions list
+
+        list of answers contributed
+
+        
     </div>
     <div class="fixed-action-btn">
         <!-- <h6>New</h6> -->
