@@ -1,6 +1,4 @@
 <?php
-    // TODO: make a nav bar
-    // details on your panel with edit profile
     include("templates/conn.php");
     include("templates/function.php");
     $errorname="";
@@ -45,13 +43,21 @@
             $errpass="Passwords dont match";
             $password=$c_password='';
         }
-        $c_password=md5($password);
+        $hash_password=md5($password);
 
         if($errorname=="" && $errpass==""){
             $sql2="INSERT INTO `all_users`(`username`, `email_id`, `password`, `name`, `DOB`, `dp_image`) 
-            VALUES ('$username','$mailid','$c_password','$name','$dob','$finaldest')";
+            VALUES ('$username','$mailid','$hash_password','$name','$dob','$finaldest')";
             $res2=mysqli_query($conn,$sql2);
             $message=" Your username is '$username' and you can login now ";
+            
+            $_SESSION['USER_LOGIN']='yes';
+            $sql3="Select * from all_users where username='$username'";
+            $res3=mysqli_query($conn,$sql3);
+            $urow = mysqli_fetch_array($res3, MYSQLI_ASSOC);
+            $_SESSION['USER_ID']=$urow['user_id'];
+            header('location:yourpanel.php');
+            die();
         }
     }
 ?>
@@ -117,7 +123,6 @@
     </script>
 </head>
 <body class="greenbg">
-    <!-- nav bar browse + about + login -->
     <div class="container">
         <div class=" grey lighten-4 container z-depth-2">
             <h3><?php echo $message?></h3>
