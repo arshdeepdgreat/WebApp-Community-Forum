@@ -9,6 +9,12 @@
     $sql1="SELECT * FROM `all_users` WHERE user_id ='$uid'";
     $res=mysqli_query($conn,$sql1);
     $urow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+
+
+    $sql2="SELECT * FROM `questions` WHERE user_id ='$uid'";
+    $res2=mysqli_query($conn,$sql2);
+    $allq=mysqli_fetch_all($res2,MYSQLI_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +88,40 @@
 
             </div>
         </div>
-        posted questions list
+        
+        <div class="grey lighten-4 z-depth-3">
+            <h4 class="center white-text">
+                Posted Questions
+            </h4>
+                <table>
+                    <th>Sno</th>
+                    <th>Question</th>
+                    <th>Category</th>
+                    <th>Posted on</th>
+                    <th>Status</th>
+                    <?php $i=1?>
+
+                    <?php foreach($allq as $q){ ?>
+                        <tr>
+                            <td><?php echo $i++?></td>
+                            <td><?php echo $q['Question']?></td>
+                            <td><?php 
+                                $sql3="SELECT * FROM `category` where cat_id = $q[cat_id]";
+                                $res3=mysqli_query($conn,$sql3);
+                                $row3=mysqli_fetch_array($res3,MYSQLI_ASSOC);
+                                echo $row3['cat_name'];
+                            ?></td>
+                            <td><?php echo $q['posted_timestamp']?></td>
+                            <td><?php if($q['status']) echo "Answered";
+                                      else echo "Unanswered";
+                                      ?><td>
+                        </tr>
+                    <?php } ?>
+                </table>
+
+            </div>
+        </div>
+
 
         unanswered questions list
 

@@ -1,3 +1,34 @@
+<?php
+    include("templates/conn.php");
+    include("templates/function.php");
+    $uid=$_SESSION['USER_ID'];
+    if ($_SESSION['USER_LOGIN']!='yes' or $_SESSION['USER_ID']=="")
+    {
+        header("location:logout.php");
+    }
+    $sql1="SELECT * FROM `all_users` WHERE user_id ='$uid'";
+    $res=mysqli_query($conn,$sql1);
+    $urow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+
+    $sql2="SELECT * FROM `category`";
+    $res2=mysqli_query($conn,$sql2);
+
+    if(isset($_POST['submit'])){
+        $question=getsafe($conn,$_POST['question']);
+        $author=getsafe($conn,$_POST['Author']);
+        $cat_id=getsafe($conn,$_POST['Category']);
+
+        echo $sql3="INSERT INTO `questions`(`Question`, `author`, `cat_id`) 
+        VALUES ('$question','$author',$cat_id)";
+
+        if(mysqli_query($conn,$sql3)){
+            header("location:yourpanel.php");
+        }
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,23 +137,20 @@
                             <select name="Author" id="Author" class="browser-default">
                                 <option value="" disabled selected>Choose your option</option>
                                 <option value="Anonymous">Anonymous</option>
-                                <option value="echo name">echo name</option>
+                                <option value="<?php echo htmlspecialchars($urow['name']);?>"><?php echo htmlspecialchars($urow['name']);?></option>
                             </select>
                         </span>
                     </div>
                    
                     <div class="col s12 m6">
-                        <label for="category">Category</label>
-                        <input type="text" name="category" id="category">
-
-                        <!-- <label style="font-size:18px; color:black;">Category</label> -->
-                        <!-- <select name="Category" class="browser-default">
-                            <?php //while($f1 = mysqli_fetch_array($res3)):; ?>
+                        <label style="font-size:18px; color:black;" for="Category">Category</label>
+                        <select name="Category" class="browser-default" id="Category">
+                            <?php while($f1 = mysqli_fetch_array($res2)): ; ?>
                             <option value="<?php echo $f1[0];?>">
-                                <?php //echo $f1[1];?>
+                                <?php echo $f1[1];?>
                             </option>
-                            <?php //endwhile; ?>
-                        </select> -->
+                            <?php endwhile; ?>
+                        </select>
                     </div>
                     
                 </div>
