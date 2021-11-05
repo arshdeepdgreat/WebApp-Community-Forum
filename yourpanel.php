@@ -15,6 +15,10 @@
     $res2=mysqli_query($conn,$sql2);
     $allq=mysqli_fetch_all($res2,MYSQLI_ASSOC);
 
+    $sql3="SELECT * FROM `answers` WHERE user_id ='$uid'";
+    $res3=mysqli_query($conn,$sql3);
+    $alla=mysqli_fetch_all($res3,MYSQLI_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -122,12 +126,33 @@
             </div>
         </div>
 
+        <div class="container grey lighten-4 z-depth-3">
+            <h4 class="center white-text">
+                Answers contributed
+            </h4>
+                <table>
+                    <th>Sno</th>
+                    <th>Question</th>
+                    <th>Posted on</th>
+                    <th>Answer</th>
+                    <?php $i=1?>
 
-        unanswered questions list
+                    <?php foreach($alla as $a){ ?>
+                        <tr>
+                            <td><?php echo $i++?></td>
+                            <td><?php $sql4="SELECT * FROM `questions` where q_id='$a[q_id]'";
+                            $res4=mysqli_query($conn,$sql4);
+                            $row4=mysqli_fetch_array($res4,MYSQLI_ASSOC);
+                            echo $row4['Question'];?></td>
+                            <td><?php echo $a['posted_timestamp']?></td>
+                            <td><?php echo $a['answer']?></td>
 
-        list of answers contributed
+                        </tr>
+                    <?php } ?>
+                </table>
 
-        
+            </div>
+        </div>        
     </div>
     <div class="fixed-action-btn">
         <!-- <h6>New</h6> -->
@@ -136,6 +161,7 @@
         </a>
     </div>
 </div>
+<div class="blbox"><br></div>
     <script>
         document.querySelector('.content').style.display="none"
 

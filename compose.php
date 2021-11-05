@@ -18,8 +18,8 @@
         $author=getsafe($conn,$_POST['Author']);
         $cat_id=getsafe($conn,$_POST['Category']);
 
-        echo $sql3="INSERT INTO `questions`(`Question`, `author`, `cat_id`) 
-        VALUES ('$question','$author',$cat_id)";
+        echo $sql3="INSERT INTO `questions`(`Question`, `author`, `cat_id`,`user_id`) 
+        VALUES ('$question','$author',$cat_id,'$uid')";
 
         if(mysqli_query($conn,$sql3)){
             header("location:yourpanel.php");

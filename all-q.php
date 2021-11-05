@@ -36,7 +36,7 @@ filter option of answered unanswered all -->
         // print_r($prods);
     }
     else{
-        $sql= "SELECT * FROM `product` WHERE `status`=1 ORDER BY `product_name` asc ";
+        $sql= "SELECT * FROM `questions`";
         $res=mysqli_query($conn,$sql);
         $prods=mysqli_fetch_all($res,MYSQLI_ASSOC);
     }
@@ -136,7 +136,14 @@ filter option of answered unanswered all -->
                           <br>
 
                           <!-- if answered view full post else answer now -->
-                          <a href="#" class="btn brand z-depth-0">View Full Post</a>
+                          <!-- <a href="#" class="btn brand z-depth-0">View Full Post</a> -->
+                          <?php if($p['status']){
+                                echo "<a href='view-post.php?q_id=$p[q_id]' class='btn brand z-depth-0'>View Full Post</a>";
+                              }
+                              else{
+                                echo "<a href='answer.php?q_id=$p[q_id]' class='btn brand z-depth-0'>Compose Answer</a>";
+                              }
+                          ?>
                           
                           </div>
                         </div>
