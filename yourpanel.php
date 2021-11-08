@@ -31,6 +31,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="templates/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <style>
+        .phonebox {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media screen and (min-width: 600px) {
+            form {
+                max-width: 800px;
+                margin: 6rem;
+                margin-bottom: 0px;
+                padding: 20px;
+                margin-top: 5rem
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            form {
+                max-width: 800px;
+                margin-bottom: 0px;
+                padding: 50px;
+                margin-top: 1rem
+            }
+
+            .phonebox {
+                margin-top: 100px;
+            }
+        }
+
+        .greenbg {
+            background-color: #155252;
+        }
+
+        h4 {
+            background-color: black;
+            padding: 10px;
+        }
+
+        .blbox {
+            padding-top: 0.5rem;
+        }
+
+        label {
+            font-size: 18px;
+            color: black;
+        }
+
+        .rd {
+            color: red;
+        }
+
+        .dp {
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body class="greenbg">
     <div class="center-screen">
