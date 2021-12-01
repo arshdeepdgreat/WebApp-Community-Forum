@@ -153,3 +153,10 @@ filter option of answered unanswered all -->
         <?php } ?>  
     </div>
     </section>
+    
+    <div class="fixed-action-btn">
+        <!-- <h6>New</h6> -->
+        <a href="compose.php" class="btn-floating btn-large red" >
+            <i class="large material-icons">mode_edit</i>
+        </a>
+    </div>
