@@ -115,7 +115,7 @@ else{
 <body class="greenbg">
     <nav class="black z-depth-0" style="padding-right: 30px;padding-left: 80px;">
 		<div>
-			<a href="#" class="brand-logo brand-text hide-on-med-and-down">heading</a>
+			<a href="#" class="brand-logo brand-text hide-on-med-and-down">Community Forum</a>
             <ul id="nav-mobile" class="right">
                 <li><a href="browse.php">Browse</a></li>
                 <li><a href="categories.php">Categories</a></li>
