@@ -94,13 +94,18 @@
     </script>
 </head>
 <body class="greenbg">
+    <div style="padding:10px; margin-top:0px;"class="black">
+        <center>
+            <h3 style="color:white;">Welcome to community forum</h3>
+        </center>
+    </div>
     <div class="container">
         <div class="greenbg phonebox">
              <br>
         </div>
         <div class="grey lighten-4 container z-depth-2">
             <h4 class="center white-text">
-                Sign up
+                Sign in
             </h4>
             <form id="form" method="POST" class="white">
                 <div>
@@ -128,8 +133,11 @@
                 <p>Dont have an account?
                 <a href="register.php">Create here</a></p>
             </div>
-            <div class="blbox"></div>
+            <div class="blbox">
+            </div>
         </div>
+        <br>
+        <br>
     </div>
     
 </body>
