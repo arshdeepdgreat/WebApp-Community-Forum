@@ -105,7 +105,7 @@ include("templates/function.php");
 		<div>
 			<a href="all-q.php" class="brand-logo brand-text hide-on-med-and-down">Go back</a>
             <ul id="nav-mobile" class="right">
-                <li><a href="browse.php">Browse</a></li>
+                <li><a href="all-q.php">Browse</a></li>
                 <li><a href="categories.php">Categories</a></li>
                 <li class="active"><a href="yourpanel.php">Your Panel</a></li>
 				<li><a href="logout.php" class="btn brand z-depth-0">Logout</a></li>
