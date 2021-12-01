@@ -49,9 +49,9 @@ filter option of answered unanswered all -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questions</title>
-    <link rel="stylesheet" href="../templates/stylesheet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style>
+    <link rel="stylesheet" type="text/css" href="templates/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet"><style>
         .phonebox {
             margin: 0;
             padding: 0;
@@ -155,7 +155,6 @@ filter option of answered unanswered all -->
     </section>
     
     <div class="fixed-action-btn">
-        <!-- <h6>New</h6> -->
         <a href="compose.php" class="btn-floating btn-large red" >
             <i class="large material-icons">mode_edit</i>
         </a>
