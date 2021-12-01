@@ -1,4 +1,7 @@
-top question today
+<!-- top question today
 
-list of few categories
+list of few categories -->
 
+<?php
+header('location:categories.php')
+?>
