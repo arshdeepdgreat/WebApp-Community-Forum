@@ -111,9 +111,9 @@ filter option of answered unanswered all -->
 <body class="greenbg">
     <nav class="black z-depth-0" style="padding-right: 30px;padding-left: 80px;">
 		<div>
-			<a href="#" class="brand-logo brand-text hide-on-med-and-down">heading</a>
+			<a href="#" class="brand-logo brand-text hide-on-med-and-down">Community Forum</a>
             <ul id="nav-mobile" class="right">
-                <li><a href="browse.php">Browse</a></li>
+                <li><a href="all-q.php">Browse</a></li>
                 <li><a href="categories.php">Categories</a></li>
                 <li class="active"><a href="yourpanel.php">Your Panel</a></li>
 				<li><a href="logout.php" class="btn brand z-depth-0">Logout</a></li>
@@ -141,7 +141,7 @@ filter option of answered unanswered all -->
                                 echo "<a href='view-post.php?q_id=$p[q_id]' class='btn brand z-depth-0'>View Full Post</a>";
                               }
                               else{
-                                echo "<a href='answer.php?q_id=$p[q_id]' class='btn brand z-depth-0'>Compose Answer</a>";
+                                echo "<a href='answer.php?q_id=$p[q_id]' class='btn blue brand z-depth-0'>Compose Answer</a>";
                               }
                           ?>
                           
