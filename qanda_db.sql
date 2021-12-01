@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2021 at 08:17 AM
+-- Generation Time: Dec 01, 2021 at 06:05 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -42,11 +42,7 @@ CREATE TABLE `all_users` (
 --
 
 INSERT INTO `all_users` (`user_id`, `username`, `email_id`, `password`, `name`, `DOB`, `dp_image`) VALUES
-(1, 'arshdeepdgreat', 'arshdeepdgreat@gmail.com', '3b900faaf1e564240995ba3e0fa578cb', 'Arshdeep Singh', '2002-02-11', 'templates\\images\\arshdeep.png'),
-(5, 'whhtwa', 'arshdeepdgreat@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Arshdeep', '2002-02-11', 'sample'),
-(6, 'gogurleen', 'gurleendgreat@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Gurleen Kaur', '2001-10-03', 'sample'),
-(11, 'goarshdeep', 'arshdeepdgreat@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Arshdeep Singh', '2002-02-11', 'templates/images/arshdeep.png'),
-(19, 'arpit', 'arpit@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Arpit', '2002-02-18', 'templates/images/IMG_20201025_091908_680.jpg');
+(1, 'arshdeepdgreat', 'arshdeepdgreat@gmail.com', '3b900faaf1e564240995ba3e0fa578cb', 'Arshdeep Singh', '2002-02-11', 'templates\\images\\arshdeep.png');
 
 -- --------------------------------------------------------
 
@@ -69,7 +65,8 @@ CREATE TABLE `answers` (
 
 INSERT INTO `answers` (`ans_id`, `q_id`, `posted_timestamp`, `author`, `answer`, `user_id`) VALUES
 (15, 1, '2021-11-05 15:21:43', 'Arshdeep Singh', 'The eight planets are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. Mercury is closest to the Sun. Neptune is the farthest. Planets, asteroids, and comets also orbit our Sun', 1),
-(16, 3, '2021-11-05 16:20:13', 'Anonymous', 'Union Territories of India<br>\r\nAndaman and Nicobar Islands.<br>\r\nDadra and Nagar Haveli and Daman and Diu.<br>\r\nChandigarh.<br>\r\nLakshadweep.<br>\r\nPuducherry.<br>\r\nDelhi.<br>\r\nLadakh.<br>\r\nJammu and Kashmir.<br>', 1);
+(16, 3, '2021-11-05 16:20:13', 'Anonymous', 'Union Territories of India<br>\r\nAndaman and Nicobar Islands.<br>\r\nDadra and Nagar Haveli and Daman and Diu.<br>\r\nChandigarh.<br>\r\nLakshadweep.<br>\r\nPuducherry.<br>\r\nDelhi.<br>\r\nLadakh.<br>\r\nJammu and Kashmir.<br>', 1),
+(17, 4, '2021-12-01 16:36:42', 'Anonymous', 'Britain has four national dishes: Chicken Tikka Masala in England; Haggis in Scotland; Welsh Cawl in Wales; and Irish Stew in Ireland. But there’s also many other traditional meals from the UK that get mentioned among the topic of Britain’s national dish, such as the Full Breakfast, Shepherd’s Pie and Sunday Roast. ', 1);
 
 -- --------------------------------------------------------
 
@@ -88,7 +85,10 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(1, 'General Knowledge', 'This category consists of general questions which are commonly known to many people and are of general origin.');
+(1, 'General Knowledge', 'General questions which are commonly known to all'),
+(2, 'Local cuisines', 'Some questions about the local cuisines'),
+(3, 'Local Language', 'Some questions about language'),
+(4, 'Tourist Places', 'Some questions about the good places to visit');
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,8 @@ CREATE TABLE `questions` (
 INSERT INTO `questions` (`q_id`, `Question`, `author`, `posted_timestamp`, `cat_id`, `status`, `user_id`) VALUES
 (1, 'What are the 8 planets of the solar system?', 'Anonymous', '2021-11-05 07:22:55', 1, 15, 1),
 (2, 'What is the capital of India?', 'Anonymous', '2021-11-05 16:15:21', 1, NULL, 1),
-(3, 'What are the union territories of India?', 'Arshdeep Singh', '2021-11-05 16:19:09', 1, 16, 1);
+(3, 'What are the union territories of India?', 'Arshdeep Singh', '2021-11-05 16:19:09', 1, 16, 1),
+(4, 'What is the national food of Britain?', 'Anonymous', '2021-12-01 16:32:56', 2, 17, 1);
 
 --
 -- Indexes for dumped tables
@@ -157,19 +158,19 @@ ALTER TABLE `all_users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `ans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
